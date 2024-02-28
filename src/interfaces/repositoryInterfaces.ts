@@ -9,4 +9,9 @@ export interface iRepository {
   getAllContactLinks: () => Promise<iSocialLinks[] | []>;
   getAllFooterLinks: () => Promise<iSocialLinks[] | []>;
   getAllLanguages: () => Promise<iTechCategory[] | []>;
+  allProjects: iProjects[];
+  allSkills: iSkillTechs[];
+  allContactLinks: iSocialLinks[];
+  allFooterLinks: iSocialLinks[];
+  allLanguages: iTechCategory[];
 }

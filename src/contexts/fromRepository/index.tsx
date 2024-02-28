@@ -9,7 +9,7 @@ import { createContext } from "react";
 
 const RepositoryContext = createContext({} as iRepository);
 
-const RepositoryProvider = ({ children }: iChildrenProps) => {
+const RepositoryProvider = async ({ children }: iChildrenProps) => {
   const getAllProjects = async () => {
     try {
       const { data } = await api.get("/allProjects.json");
@@ -65,6 +65,11 @@ const RepositoryProvider = ({ children }: iChildrenProps) => {
     }
   };
 
+  const allProjects = await getAllProjects();
+  const allSkills = await getAllSkills();
+  const allContactLinks = await getAllContactLinks();
+  const allFooterLinks = await getAllFooterLinks();
+  const allLanguages = await getAllLanguages();
   return (
     <>
       <RepositoryContext.Provider
@@ -74,6 +79,11 @@ const RepositoryProvider = ({ children }: iChildrenProps) => {
           getAllContactLinks,
           getAllFooterLinks,
           getAllLanguages,
+          allProjects,
+          allSkills,
+          allContactLinks,
+          allFooterLinks,
+          allLanguages,
         }}
       >
         {children}

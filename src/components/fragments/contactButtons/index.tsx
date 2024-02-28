@@ -6,19 +6,11 @@ import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 
 const ContactButtons = () => {
-  const { getAllContactLinks } = useContext(RepositoryContext);
-  const [contactLinks, setContactLinks] = useState<iSocialLinks[] | []>([]);
-
-  useEffect(() => {
-    (async () => {
-      const dataContactLinks = await getAllContactLinks();
-      setContactLinks(dataContactLinks);
-    })();
-  }, [getAllContactLinks]);
+  const { allContactLinks } = useContext(RepositoryContext);
 
   return (
     <ul className="flex flex-wrap items-center justify-around gap-4 lg:flex-wrap ter md:justify-center md:flex-nowrap lg:justify-center sm:flex-row">
-      {contactLinks.map(({ id, link, name, img, alt }: iSocialLinks) => (
+      {allContactLinks.map(({ id, link, name, img, alt }: iSocialLinks) => (
         <li
           className="flex flex-col w-full md:w-auto md:flex-row "
           key={id}
@@ -28,12 +20,12 @@ const ContactButtons = () => {
             href={link}
             target="_blank"
           >
-            <div className="flex flex-row items-center justify-start w-32 gap-1 md:w-28">
-              <figure className="flex flex-row items-center w-12 h-14">
+            <div className="flex flex-row items-center justify-start w-32 gap-1 lg:gap-0 md:w-32">
+              <figure className="flex flex-row items-center w-14 h-14">
                 <Image
                   width={500}
                   height={500}
-                  className="w-10 h-10 "
+                  className="w-10 h-10"
                   src={img}
                   alt={alt}
                 />

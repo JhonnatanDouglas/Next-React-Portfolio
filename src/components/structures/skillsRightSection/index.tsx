@@ -3,21 +3,10 @@
 import SkillsList from "@/components/fragments/skillList";
 import TechList from "@/components/fragments/techList";
 import { RepositoryContext } from "@/contexts/fromRepository";
-import { iTechCategory } from "@/interfaces/techsItemsInterfaces";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 const SkillsRightSection = () => {
-  const { getAllLanguages } = useContext(RepositoryContext);
-  const [skillLanguages, setSkillsLanguages] = useState<[] | iTechCategory[]>(
-    []
-  );
-
-  useEffect(() => {
-    (async () => {
-      const dataSkillLanguages = await getAllLanguages();
-      setSkillsLanguages(dataSkillLanguages);
-    })();
-  }, [getAllLanguages]);
+  const { allLanguages } = useContext(RepositoryContext);
 
   return (
     <section className="flex flex-col justify-center w-full p-4 bg-gray-900 border rounded-b-lg dark:text-gray-100 lg:rounded-r-lg lg:rounded-none bg-opacity-5 lg:p-8 dark:border-gray-700 backdrop-blur-sm">
@@ -27,7 +16,7 @@ const SkillsRightSection = () => {
         </h3>
       </div>
       <div>
-        {skillLanguages.map((skill) =>
+        {allLanguages.map((skill) =>
           skill.stack === "frontend" ? (
             <TechList
               key={skill.id}
@@ -36,7 +25,7 @@ const SkillsRightSection = () => {
             />
           ) : null
         )}
-        {skillLanguages.map((skill) =>
+        {allLanguages.map((skill) =>
           skill.stack === "backend" ? (
             <TechList
               key={skill.id}
@@ -54,7 +43,7 @@ const SkillsRightSection = () => {
         </div>
         <SkillsList />
       </div>
-      {skillLanguages.map((skill) =>
+      {allLanguages.map((skill) =>
         skill.stack === "extra" ? (
           <TechList
             key={skill.id}
