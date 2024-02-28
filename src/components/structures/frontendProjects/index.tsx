@@ -1,24 +1,15 @@
 "use client";
 
 import { RepositoryContext } from "@/contexts/fromRepository";
-import { iProjects } from "@/interfaces/projectsInterfaces";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Project from "../projectList";
 
 const FrontEndProjects = () => {
-  const { getAllProjects } = useContext(RepositoryContext);
-  const [projects, setProjects] = useState<iProjects[] | []>([]);
-
-  useEffect(() => {
-    (async () => {
-      const dataProjects = await getAllProjects();
-      setProjects(dataProjects);
-    })();
-  }, [getAllProjects]);
+  const { allProjects } = useContext(RepositoryContext);
 
   return (
     <ul className="flex flex-col h-full gap-4 pr-2 my-6 mr-2 overflow-y-auto md:max-h-projects xl:my-4 lg:mt-8">
-      {projects.map(
+      {allProjects.map(
         ({
           stack,
           id,

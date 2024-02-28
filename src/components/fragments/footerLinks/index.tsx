@@ -1,24 +1,15 @@
 "use client";
 
 import { RepositoryContext } from "@/contexts/fromRepository";
-import { iSocialLinks } from "@/interfaces/socialInterfaces";
 import Image from "next/image";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 const FooterLinks = () => {
-  const { getAllFooterLinks } = useContext(RepositoryContext);
-  const [footerLinks, setFooterLinks] = useState<[] | iSocialLinks[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const datafooterLinks = await getAllFooterLinks();
-      setFooterLinks(datafooterLinks);
-    })();
-  }, [getAllFooterLinks]);
+  const { allFooterLinks } = useContext(RepositoryContext);
 
   return (
     <ul className="flex flex-wrap items-center gap-3 mt-3 text-sm font-medium sm:mt-0">
-      {footerLinks.map(({ id, link, img, alt }) => (
+      {allFooterLinks.map(({ id, link, img, alt }) => (
         <li key={id}>
           <a
             href={link}

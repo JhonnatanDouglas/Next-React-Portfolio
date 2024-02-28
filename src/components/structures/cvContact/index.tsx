@@ -2,7 +2,7 @@
 
 import MiniButton from "@/components/fragments/cvButton";
 
-const CvContact: () => JSX.Element = () => {
+const CvContact = () => {
   return (
     <div className="flex flex-wrap items-center my-8 sm:my-4 sm:flex-row">
       <h3 className="mb-1 mr-2 text-lg font-semibold text-gray-700 sm:text-xl dark:text-gray-100">
