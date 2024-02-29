@@ -22,6 +22,7 @@ const SkillsRightSection = () => {
               key={skill.id}
               database={skill.list}
               dev="Front-End: "
+              mode="top"
             />
           ) : null
         )}
@@ -31,6 +32,7 @@ const SkillsRightSection = () => {
               key={skill.id}
               database={skill.list}
               dev="Back-End: "
+              mode="bottom"
             />
           ) : null
         )}
@@ -49,6 +51,7 @@ const SkillsRightSection = () => {
             key={skill.id}
             database={skill.list}
             dev="Extras: "
+            mode="top"
           />
         ) : null
       )}

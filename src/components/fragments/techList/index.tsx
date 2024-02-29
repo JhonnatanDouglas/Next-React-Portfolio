@@ -1,9 +1,10 @@
 "use client";
 
 import { iTechListDev } from "@/interfaces/standartInterfaces";
+import { Tooltip } from "@material-tailwind/react";
 import Image from "next/image";
 
-const TechList = ({ dev, database }: iTechListDev) => {
+const TechList = ({ dev, database, mode }: iTechListDev) => {
   return (
     <>
       <div className="mt-4">
@@ -16,14 +17,23 @@ const TechList = ({ dev, database }: iTechListDev) => {
               className="hover:animate-pulse"
               key={id}
             >
-              <Image
-                width={500}
-                height={500}
-                className="w-8 bg-gray-100 border border-gray-800 dark:border-gray-600 sm:w-10 rounded-xl by-6 dark:bg-gray-900 lg:w-12"
-                src={link}
-                alt={alt}
-                title={name}
-              />
+              <Tooltip
+                className="bg-gray-600 dark:bg-gray-100 text-gray-50 dark:text-gray-800 px-[8px] py-[1px] font-mono"
+                content={name}
+                placement={mode}
+                animate={{
+                  mount: { scale: 1, y: 0 },
+                  unmount: { scale: 0, y: 0 },
+                }}
+              >
+                <Image
+                  width={500}
+                  height={500}
+                  className="w-8 bg-gray-100 border border-gray-800 dark:border-gray-600 sm:w-10 rounded-xl by-6 dark:bg-gray-900 lg:w-12"
+                  src={link}
+                  alt={alt}
+                />
+              </Tooltip>
             </li>
           ))}
         </ul>
