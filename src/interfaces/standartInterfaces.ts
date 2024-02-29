@@ -59,4 +59,5 @@ export interface iMostUsedTech {
 export interface iTechListDev {
   dev: string;
   database: iTechItem[];
+  mode?: "top" | "bottom";
 }
